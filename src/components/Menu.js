@@ -1,9 +1,11 @@
 import { useState } from "react";
+import useScrollReveal from "../hooks/useScrollReveal";
 import Pizza from "./Pizza";
 
 const categories = ["all", "vegetarian", "meat"];
 
 function Menu({ pizzas }) {
+  const [sectionRef, isVisible] = useScrollReveal();
   const [searchQuery, setSearchQuery] = useState("");
   const [category, setCategory] = useState("all");
 
@@ -17,7 +19,11 @@ function Menu({ pizzas }) {
   });
 
   return (
-    <section className="menu" id="menu">
+    <section
+      ref={sectionRef}
+      className={`menu reveal-section${isVisible ? " visible" : ""}`}
+      id="menu"
+    >
       <h2>Our Menu</h2>
       <p>
         {pizzas.length} handcrafted pizzas. All from our stone oven, all

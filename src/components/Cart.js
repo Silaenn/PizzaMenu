@@ -1,10 +1,22 @@
+import { useRef, useEffect } from "react";
 import { useCart } from "./CartContext";
 
 function Cart({ onCheckout, onClose }) {
   const { items, totalItems, totalPrice, dispatch } = useCart();
+  const panelRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (panelRef.current && !panelRef.current.contains(e.target)) {
+        onClose();
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [onClose]);
 
   return (
-    <aside className="cart" id="cart">
+    <aside ref={panelRef} className="cart" id="cart">
       <div className="cart-header">
         <h3>Your Cart{totalItems > 0 ? ` (${totalItems})` : ""}</h3>
         <div className="cart-header-actions">
