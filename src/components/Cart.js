@@ -7,6 +7,7 @@ function Cart({ isOpen, onCheckout, onClose }) {
 
   useEffect(() => {
     const handleClickOutside = (e) => {
+      if (e.target.closest(".btn-add")) return;
       if (panelRef.current && !panelRef.current.contains(e.target)) {
         onClose();
       }

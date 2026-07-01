@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "./CartContext";
 
-function Checkout({ onClose }) {
+function Checkout({ isOpen, onClose, onOrderPlaced }) {
   const { items, totalItems, totalPrice, dispatch } = useCart();
   const [form, setForm] = useState({ name: "", phone: "", address: "", notes: "" });
-  const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
 
-  if (submitted) return null;
+  useEffect(() => {
+    if (isOpen) {
+      setForm({ name: "", phone: "", address: "", notes: "" });
+      setErrors({});
+    }
+  }, [isOpen]);
 
   function validate() {
     const errs = {};
@@ -32,19 +36,15 @@ function Checkout({ onClose }) {
     };
 
     dispatch({ type: "ADD_ORDER", payload: order });
-    setSubmitted(true);
+    onOrderPlaced?.();
   }
 
   function handleChange(field) {
     return (e) => setForm({ ...form, [field]: e.target.value });
   }
 
-  if (submitted) {
-    return null;
-  }
-
   return (
-    <section className="checkout">
+    <section className={`checkout${isOpen ? "" : " checkout--closed"}`}>
       <div className="checkout-overlay" onClick={onClose} />
       <div className="checkout-modal">
         <button className="checkout-close" onClick={onClose}>

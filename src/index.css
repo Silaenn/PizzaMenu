@@ -994,6 +994,14 @@ body::before {
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.checkout--closed {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .checkout-overlay {
@@ -1001,6 +1009,11 @@ body::before {
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
+  transition: opacity 0.3s ease;
+}
+
+.checkout--closed .checkout-overlay {
+  opacity: 0;
 }
 
 .checkout-modal {
@@ -1013,19 +1026,14 @@ body::before {
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
-  animation: modalIn 0.3s ease both;
-  transition: background 0.3s;
+  transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s;
+  transform: scale(1) translateY(0);
+  opacity: 1;
 }
 
-@keyframes modalIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95) translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
+.checkout--closed .checkout-modal {
+  transform: scale(0.95) translateY(10px);
+  opacity: 0;
 }
 
 .checkout-close {
@@ -1119,20 +1127,52 @@ body::before {
 /* *************** */
 
 .order-confirm {
-  padding: 6rem 4rem;
+  position: fixed;
+  inset: 0;
+  z-index: 300;
   display: flex;
+  align-items: center;
   justify-content: center;
+  padding: 2rem;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.order-confirm--closed {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.order-confirm-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  transition: opacity 0.3s ease;
+}
+
+.order-confirm--closed .order-confirm-overlay {
+  opacity: 0;
 }
 
 .confirm-card {
+  position: relative;
   max-width: 52rem;
   width: 100%;
   background: var(--color-card-bg);
   border-radius: var(--radius-lg);
   padding: 4rem;
   text-align: center;
-  box-shadow: var(--shadow-sm);
-  transition: background 0.3s;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s;
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.order-confirm--closed .confirm-card {
+  transform: scale(0.95) translateY(10px);
+  opacity: 0;
 }
 
 .confirm-icon {
@@ -1220,6 +1260,200 @@ body::before {
   flex-direction: column;
   gap: 0.8rem;
   transition: color 0.3s;
+}
+
+/* *************** */
+/* ORDER HISTORY   */
+/* *************** */
+
+.order-history {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.order-history--closed {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.order-history-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  transition: opacity 0.3s ease;
+}
+
+.order-history--closed .order-history-overlay {
+  opacity: 0;
+}
+
+.order-history-modal {
+  position: relative;
+  background: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  padding: 3.2rem;
+  width: 100%;
+  max-width: 52rem;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s;
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.order-history--closed .order-history-modal {
+  transform: scale(0.95) translateY(10px);
+  opacity: 0;
+}
+
+.order-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 2px solid var(--color-border-light);
+  transition: border-color 0.3s;
+}
+
+.order-history-header h2 {
+  font-family: var(--font-header);
+  font-size: 2.8rem;
+  color: var(--color-text);
+  transition: color 0.3s;
+}
+
+.order-history-close {
+  background: none;
+  border: none;
+  font-size: 2.4rem;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.order-history-close:hover {
+  color: var(--color-text);
+}
+
+.order-history-empty {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 1.4rem;
+  padding: 4rem 0;
+}
+
+.order-history-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.history-item {
+  background: var(--cart-item-bg);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: background 0.3s;
+  animation: fadeSlideUp 0.3s ease both;
+}
+
+.history-item-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.6rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  color: var(--color-text);
+  transition: background 0.2s, color 0.3s;
+}
+
+.history-item-header:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="dark"] .history-item-header:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.history-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.history-item-id {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-text);
+  transition: color 0.3s;
+}
+
+.history-item-meta {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.history-item-time {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+}
+
+.history-item-arrow {
+  font-size: 1.4rem;
+  color: var(--color-text-muted);
+  transition: color 0.2s;
+}
+
+.history-item-header:hover .history-item-arrow {
+  color: var(--color-primary);
+}
+
+.history-item-detail {
+  padding: 0 1.6rem 1.6rem;
+  border-top: 1px solid var(--color-border-light);
+  transition: border-color 0.3s;
+  animation: fadeSlideUp 0.3s ease both;
+}
+
+.history-item-detail .confirm-details {
+  margin-top: 1.2rem;
+}
+
+.history-item-delete {
+  width: 100%;
+  margin-top: 1.2rem;
+  padding: 0.8rem 1.6rem;
+  background: none;
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+  border-radius: var(--radius-sm);
+  font-size: 1.3rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.history-item-delete:hover {
+  background: #e74c3c;
+  color: #fff;
 }
 
 /* *************** */

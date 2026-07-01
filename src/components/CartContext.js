@@ -68,6 +68,11 @@ function cartReducer(state, action) {
       const newOrders = [action.payload, ...state.orders];
       return { ...state, orders: newOrders, items: [], totalItems: 0, totalPrice: 0 };
     }
+    case "DELETE_ORDER":
+      return {
+        ...state,
+        orders: state.orders.filter((o) => o.id !== action.payload),
+      };
     default:
       return state;
   }

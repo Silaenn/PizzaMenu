@@ -9,12 +9,14 @@ import Footer from "./Footer";
 import Cart from "./Cart";
 import Checkout from "./Checkout";
 import OrderConfirm from "./OrderConfirm";
+import OrderHistory from "./OrderHistory";
 
 function AppContent() {
   const [showCheckout, setShowCheckout] = useState(false);
   const [showCart, setShowCart] = useState(false);
-  const { items, orders } = useCart();
-  const hasOrders = orders.length > 0;
+  const [showOrderHistory, setShowOrderHistory] = useState(false);
+  const [showOrderConfirm, setShowOrderConfirm] = useState(false);
+  const { items } = useCart();
 
   const prevItemCount = useRef(0);
   useEffect(() => {
@@ -31,22 +33,30 @@ function AppContent() {
     setShowCheckout(true);
   }, []);
   const handleCloseCheckout = useCallback(() => setShowCheckout(false), []);
-  const handleOrderDone = useCallback(() => setShowCheckout(false), []);
+  const handleOrderPlaced = useCallback(() => {
+    setShowCheckout(false);
+    setShowOrderConfirm(true);
+  }, []);
+  const handleOrderDone = useCallback(() => setShowOrderConfirm(false), []);
+  const handleToggleHistory = useCallback(
+    () => setShowOrderHistory((v) => !v),
+    []
+  );
 
   return (
     <>
-      <Header onToggleCart={handleToggleCart} />
+      <Header
+        onToggleCart={handleToggleCart}
+        onToggleHistory={handleToggleHistory}
+      />
       <Hero />
       <About />
       <Menu pizzas={pizzaData} />
       <Footer onCheckout={handleCheckout} />
       <Cart isOpen={showCart} onCheckout={handleCheckout} onClose={handleCloseCart} />
-
-      {showCheckout && !hasOrders && (
-        <Checkout onClose={handleCloseCheckout} />
-      )}
-
-      {hasOrders && <OrderConfirm onClose={handleOrderDone} />}
+      <Checkout isOpen={showCheckout} onClose={handleCloseCheckout} onOrderPlaced={handleOrderPlaced} />
+      <OrderConfirm isOpen={showOrderConfirm} onClose={handleOrderDone} />
+      <OrderHistory isOpen={showOrderHistory} onClose={() => setShowOrderHistory(false)} />
     </>
   );
 }
