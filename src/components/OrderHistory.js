@@ -5,9 +5,13 @@ import { LocationIcon, PhoneIcon } from "./Icons";
 function OrderHistory({ isOpen, onClose }) {
   const { orders, dispatch } = useCart();
   const [expanded, setExpanded] = useState(null);
+  const [deletingId, setDeletingId] = useState(null);
 
   useEffect(() => {
-    if (!isOpen) setExpanded(null);
+    if (!isOpen) {
+      setExpanded(null);
+      setDeletingId(null);
+    }
   }, [isOpen]);
 
   function formatTime(iso) {
@@ -39,7 +43,7 @@ function OrderHistory({ isOpen, onClose }) {
         ) : (
           <ul className="order-history-list">
             {orders.map((order) => (
-              <li key={order.id} className="history-item">
+              <li key={order.id} className={`history-item${deletingId === order.id ? " history-item--deleting" : ""}`}>
                 <button
                   className="history-item-header"
                   onClick={() =>
@@ -87,9 +91,12 @@ function OrderHistory({ isOpen, onClose }) {
 
                     <button
                       className="history-item-delete"
-                      onClick={() =>
-                        dispatch({ type: "DELETE_ORDER", payload: order.id })
-                      }
+                      onClick={() => {
+                        setDeletingId(order.id);
+                        setTimeout(() => {
+                          dispatch({ type: "DELETE_ORDER", payload: order.id });
+                        }, 300);
+                      }}
                     >
                       Delete Order
                     </button>

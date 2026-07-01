@@ -1352,6 +1352,19 @@ body::before {
   color: var(--color-text-muted);
   font-size: 1.4rem;
   padding: 4rem 0;
+  animation: fadeSlideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.history-item--deleting {
+  animation: historyItemOut 0.3s ease both !important;
+  pointer-events: none;
+}
+
+@keyframes historyItemOut {
+  to {
+    opacity: 0;
+    transform: translateX(-20px) scale(0.95);
+  }
 }
 
 .order-history-list {
