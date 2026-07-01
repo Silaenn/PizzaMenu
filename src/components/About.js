@@ -1,3 +1,5 @@
+import useScrollReveal from "../hooks/useScrollReveal";
+
 const images = [
   "/pizzas/margherita.jpg",
   "/pizzas/diavola.jpg",
@@ -6,8 +8,14 @@ const images = [
 ];
 
 function About() {
+  const [sectionRef, isVisible] = useScrollReveal();
+
   return (
-    <section className="about" id="about">
+    <section
+      ref={sectionRef}
+      className={`about reveal-section${isVisible ? " visible" : ""}`}
+      id="about"
+    >
       <div className="about-content">
         <h2>Our Story</h2>
         <div className="about-grid">

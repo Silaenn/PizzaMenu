@@ -9,7 +9,8 @@ function Hero() {
         className="hero-bg"
         style={{ backgroundImage: "url(/pizzas/hero-bg.jpg)" }}
       />
-      <div className="hero-overlay" />
+      <div className="hero-overlay hero-overlay-light" />
+      <div className="hero-overlay hero-overlay-dark" />
       <div className="hero-content">
         <h1 className="hero-title">Fast React Pizza Co.</h1>
         <p className="hero-subtitle">

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "./CartContext";
 
 function SunIcon() {
@@ -96,7 +96,7 @@ function Header({ onToggleCart }) {
           title="Cart"
         >
           <CartIcon />
-          {totalItems > 0 && <span className="cart-count">{totalItems}</span>}
+          {totalItems > 0 && <span key={totalItems} className="cart-count">{totalItems}</span>}
         </button>
       </div>
     </header>

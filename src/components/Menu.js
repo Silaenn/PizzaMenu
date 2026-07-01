@@ -46,7 +46,7 @@ function Menu({ pizzas }) {
       </div>
 
       {filtered.length > 0 ? (
-        <ul className="pizzas">
+        <ul className="pizzas" key={`${category}-${searchQuery}`}>
           {filtered.map((data, i) => (
             <Pizza pizzaObj={data} key={data.name} index={i} />
           ))}

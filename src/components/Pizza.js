@@ -1,7 +1,23 @@
+import { useState, useCallback } from "react";
 import { useCart } from "./CartContext";
 
 function Pizza({ pizzaObj, index }) {
   const { dispatch } = useCart();
+  const [added, setAdded] = useState(false);
+
+  const handleAdd = useCallback(() => {
+    dispatch({
+      type: "ADD_ITEM",
+      payload: {
+        id: pizzaObj.name,
+        name: pizzaObj.name,
+        price: pizzaObj.price,
+        photoName: pizzaObj.photoName,
+      },
+    });
+    setAdded(true);
+    setTimeout(() => setAdded(false), 600);
+  }, [dispatch, pizzaObj]);
 
   return (
     <li
@@ -20,20 +36,10 @@ function Pizza({ pizzaObj, index }) {
           </span>
           {!pizzaObj.soldOut && (
             <button
-              className="btn btn-add"
-              onClick={() =>
-                dispatch({
-                  type: "ADD_ITEM",
-                  payload: {
-                    id: pizzaObj.name,
-                    name: pizzaObj.name,
-                    price: pizzaObj.price,
-                    photoName: pizzaObj.photoName,
-                  },
-                })
-              }
+              className={`btn btn-add${added ? " btn-added" : ""}`}
+              onClick={handleAdd}
             >
-              + Add
+              {added ? "✓ Added" : "+ Add"}
             </button>
           )}
         </div>

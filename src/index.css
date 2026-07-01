@@ -88,6 +88,7 @@ body::before {
   transition: background 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
   background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, transparent 100%);
   backdrop-filter: blur(2px);
+  animation: headerSlideDown 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 [data-theme="dark"] .header {
@@ -224,6 +225,18 @@ body::before {
   font-weight: 700;
   box-shadow: 0 2px 6px rgba(192, 57, 43, 0.35);
   line-height: 1;
+  animation: cartBounce 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes headerSlideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* *************** */
@@ -252,12 +265,25 @@ body::before {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(192, 57, 43, 0.55), rgba(44, 24, 16, 0.45));
   z-index: 1;
+  transition: opacity 0.5s ease;
 }
 
-[data-theme="dark"] .hero-overlay {
+.hero-overlay-light {
+  background: linear-gradient(135deg, rgba(192, 57, 43, 0.55), rgba(44, 24, 16, 0.45));
+}
+
+[data-theme="dark"] .hero-overlay-light {
+  opacity: 0;
+}
+
+.hero-overlay-dark {
   background: linear-gradient(135deg, rgba(26, 20, 16, 0.75), rgba(192, 57, 43, 0.35));
+  opacity: 0;
+}
+
+[data-theme="dark"] .hero-overlay-dark {
+  opacity: 1;
 }
 
 .hero-content {
@@ -840,6 +866,7 @@ body::before {
   background: var(--cart-item-bg);
   border-radius: 8px;
   transition: background 0.3s;
+  animation: fadeSlideUp 0.3s ease both;
 }
 
 .cart-item-info {
@@ -1176,6 +1203,46 @@ body::before {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes cartBounce {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.4); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+@keyframes revealIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* *************** */
+/* SCROLL REVEAL   */
+/* *************** */
+
+.reveal-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-added {
+  background-color: #27ae60 !important;
+  pointer-events: none;
+  transform: scale(1.08);
 }
 
 /* *************** */
