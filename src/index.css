@@ -124,7 +124,7 @@ body::before {
 .header-logo-img {
   display: block;
   width: auto;
-  height: 3.6rem;
+  height: 5rem;
   object-fit: contain;
   transition: transform 0.2s;
 }

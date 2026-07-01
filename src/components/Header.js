@@ -53,8 +53,8 @@ function Header() {
   }, [dark]);
 
   useEffect(() => {
-    const sentinel = document.getElementById("hero-sentinel");
-    if (!sentinel) return;
+    const hero = document.getElementById("hero");
+    if (!hero) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -63,7 +63,7 @@ function Header() {
       { threshold: 0 }
     );
 
-    observer.observe(sentinel);
+    observer.observe(hero);
     return () => observer.disconnect();
   }, []);
 
