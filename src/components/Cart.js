@@ -4,16 +4,30 @@ import { useCart } from "./CartContext";
 function Cart({ isOpen, onCheckout, onClose }) {
   const { items, totalItems, totalPrice, dispatch } = useCart();
   const panelRef = useRef(null);
+  const startedOnExcluded = useRef(false);
 
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (e.target.closest(".btn-add")) return;
+    const handleMouseDown = (e) => {
+      startedOnExcluded.current = !!e.target.closest(".btn-add, .pizza, #menu");
+    };
+
+    const handleClick = (e) => {
+      if (startedOnExcluded.current) {
+        startedOnExcluded.current = false;
+        return;
+      }
+      if (e.target.closest(".cart-btn")) return;
       if (panelRef.current && !panelRef.current.contains(e.target)) {
         onClose();
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+
+    document.addEventListener("mousedown", handleMouseDown);
+    document.addEventListener("click", handleClick);
+    return () => {
+      document.removeEventListener("mousedown", handleMouseDown);
+      document.removeEventListener("click", handleClick);
+    };
   }, [onClose]);
 
   return (
