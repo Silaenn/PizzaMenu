@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useCart } from "./CartContext";
 
 function SunIcon() {
@@ -45,6 +45,7 @@ function Header() {
     }
   });
   const [scrolled, setScrolled] = useState(false);
+  const heroSentinel = useRef(null);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
@@ -52,10 +53,18 @@ function Header() {
   }, [dark]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    const sentinel = document.getElementById("hero-sentinel");
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setScrolled(!entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(sentinel);
+    return () => observer.disconnect();
   }, []);
 
   const scrollTo = (id) => {
@@ -66,7 +75,7 @@ function Header() {
     <header className={`header${scrolled ? " header-scrolled" : ""}`}>
       <div className="header-left">
         <button className="header-logo-btn" onClick={() => scrollTo("#hero")}>
-          <span className="header-logo-text">FP</span>
+          <img src="/logo.png" alt="Fast React Pizza Co." className="header-logo-img" />
         </button>
         <nav className="header-nav">
           <button onClick={() => scrollTo("#about")}>About</button>

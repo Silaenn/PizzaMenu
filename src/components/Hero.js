@@ -5,6 +5,7 @@ function Hero() {
 
   return (
     <section className="hero" id="hero">
+      <div id="hero-sentinel" />
       <div
         className="hero-bg"
         style={{ backgroundImage: "url(/pizzas/hero-bg.jpg)" }}
