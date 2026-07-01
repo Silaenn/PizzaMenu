@@ -5,7 +5,7 @@ import Pizza from "./Pizza";
 const categories = ["all", "vegetarian", "meat"];
 
 function Menu({ pizzas }) {
-  const [sectionRef, isVisible] = useScrollReveal();
+  const [sectionRef, isVisible] = useScrollReveal(.1);
   const [searchQuery, setSearchQuery] = useState("");
   const [category, setCategory] = useState("all");
 

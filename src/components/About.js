@@ -8,7 +8,7 @@ const images = [
 ];
 
 function About() {
-  const [sectionRef, isVisible] = useScrollReveal();
+  const [sectionRef, isVisible] = useScrollReveal(.4);
 
   return (
     <section
