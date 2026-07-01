@@ -4,7 +4,11 @@ function Hero() {
   };
 
   return (
-    <section className="hero">
+    <section className="hero" id="hero">
+      <div
+        className="hero-bg"
+        style={{ backgroundImage: "url(/pizzas/hero-bg.jpg)" }}
+      />
       <div className="hero-overlay" />
       <div className="hero-content">
         <h1 className="hero-title">Fast React Pizza Co.</h1>
