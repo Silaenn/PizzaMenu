@@ -1,8 +1,6 @@
-import useScrollReveal from "../hooks/useScrollReveal";
 import Order from "./Order";
 
 function Footer({ onCheckout }) {
-  const [footerRef, isVisible] = useScrollReveal();
   const hour = new Date().getHours();
   const openHour = 12;
   const closeHour = 22;
@@ -12,8 +10,7 @@ function Footer({ onCheckout }) {
     const nextOpen = hour < openHour ? openHour : 12;
     return (
       <footer
-        ref={footerRef}
-        className={`footer reveal-section${isVisible ? " visible" : ""}`}
+        className="footer"
       >
         <div className="order">
           <p>We're currently closed for the day.</p>
@@ -33,8 +30,7 @@ function Footer({ onCheckout }) {
 
   return (
     <footer
-      ref={footerRef}
-      className={`footer reveal-section${isVisible ? " visible" : ""}`}
+      className="footer"
     >
       <Order
         closeHour={closeHour}
