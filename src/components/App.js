@@ -40,7 +40,7 @@ function AppContent() {
       <About />
       <Menu pizzas={pizzaData} />
       <Footer onCheckout={handleCheckout} />
-      {showCart && <Cart onCheckout={handleCheckout} onClose={handleCloseCart} />}
+      <Cart isOpen={showCart} onCheckout={handleCheckout} onClose={handleCloseCart} />
 
       {showCheckout && !hasOrders && (
         <Checkout onClose={handleCloseCheckout} />

@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import { useCart } from "./CartContext";
 
-function Cart({ onCheckout, onClose }) {
+function Cart({ isOpen, onCheckout, onClose }) {
   const { items, totalItems, totalPrice, dispatch } = useCart();
   const panelRef = useRef(null);
 
@@ -16,7 +16,7 @@ function Cart({ onCheckout, onClose }) {
   }, [onClose]);
 
   return (
-    <aside ref={panelRef} className="cart" id="cart">
+    <aside ref={panelRef} className={`cart${isOpen ? " cart--open" : ""}`} id="cart">
       <div className="cart-header">
         <h3>Your Cart{totalItems > 0 ? ` (${totalItems})` : ""}</h3>
         <div className="cart-header-actions">
