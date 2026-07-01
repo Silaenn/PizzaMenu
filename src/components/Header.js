@@ -35,7 +35,7 @@ function CartIcon() {
   );
 }
 
-function Header() {
+function Header({ onToggleCart }) {
   const { totalItems } = useCart();
   const [dark, setDark] = useState(() => {
     try {
@@ -45,7 +45,6 @@ function Header() {
     }
   });
   const [scrolled, setScrolled] = useState(false);
-  const heroSentinel = useRef(null);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
@@ -93,7 +92,7 @@ function Header() {
         </button>
         <button
           className="header-icon-btn cart-btn"
-          onClick={() => scrollTo("#cart")}
+          onClick={onToggleCart}
           title="Cart"
         >
           <CartIcon />

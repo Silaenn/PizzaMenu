@@ -124,7 +124,7 @@ body::before {
 .header-logo-img {
   display: block;
   width: auto;
-  height: 5rem;
+  height: 4rem;
   object-fit: contain;
   transition: transform 0.2s;
 }
@@ -787,6 +787,12 @@ body::before {
   transition: color 0.3s;
 }
 
+.cart-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .cart-clear {
   background: none;
   border: none;
@@ -795,6 +801,27 @@ body::before {
   cursor: pointer;
   text-decoration: underline;
   font-family: inherit;
+}
+
+.cart-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.cart-close:hover {
+  color: var(--color-text);
+}
+
+.cart-empty {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 1.4rem;
+  padding: 3rem 0;
 }
 
 .cart-items {
