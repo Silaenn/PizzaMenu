@@ -80,17 +80,8 @@ This project was built as a full-featured SPA demo — no backend, no database, 
 
 ## Screenshots
 
-> Screenshots coming soon. Run the project locally to see the full experience.
+<img width="1936" height="5079" alt="Fast-React-Pizza-Co-—-Authentic-Italian-Pizza(1)" src="https://github.com/user-attachments/assets/17cb3da3-bf42-4b17-8fee-9bc8812cdf72" />
 
-```
-Hero     → Full-viewport background with tagline and CTA
-About    → Story section with image grid and stats
-Menu     → Search + category tabs + pizza card grid
-Cart     → Slide-out panel with quantity controls and total
-Checkout → Validated delivery form with order summary
-Confirm  → Order confirmation card with delivery info
-History  → Expandable accordion of past orders
-```
 
 ---
 
