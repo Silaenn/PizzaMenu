@@ -1,12 +1,13 @@
 <div align="center">
 
+<img src="public/logo.png" alt="Fast React Pizza Co. logo" width="120" height="120">
+
 # Fast React Pizza Co.
 
 **Authentic Italian pizza — wood-fired since 2025**
 
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev)
 [![Node](https://img.shields.io/badge/Node-%3E%3D18-339933?logo=node.js&logoColor=white)](https://nodejs.org)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing)
 [![Status](https://img.shields.io/badge/status-active-success.svg)](#)
 
@@ -64,14 +65,14 @@ This project was built as a full-featured SPA demo — no backend, no database, 
 [![Create React App](https://img.shields.io/badge/CRA-5.0-09D3AC?style=flat&logo=create-react-app)](https://create-react-app.dev)
 [![Google Fonts](https://img.shields.io/badge/Fonts-Outfit_%2F_Playfair_Display-4285F4?style=flat&logo=google-fonts)](https://fonts.google.com)
 
-| Layer | Technology |
-|---|---|
-| UI Library | React 19 |
-| State Management | Context API + `useReducer` |
-| Persistence | `localStorage` |
-| Styling | CSS (custom properties, flexbox, grid, keyframes) |
-| Build Tool | Create React App 5 |
-| Fonts | Outfit (body) · Playfair Display (headings) |
+| Layer            | Technology                                        |
+| ---------------- | ------------------------------------------------- |
+| UI Library       | React 19                                          |
+| State Management | Context API + `useReducer`                        |
+| Persistence      | `localStorage`                                    |
+| Styling          | CSS (custom properties, flexbox, grid, keyframes) |
+| Build Tool       | Create React App 5                                |
+| Fonts            | Outfit (body) · Playfair Display (headings)       |
 
 **No external state libraries, no CSS frameworks, no backend runtime.** Just React and the DOM.
 
