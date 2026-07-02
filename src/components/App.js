@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import pizzaData from "../data";
 import { CartProvider } from "./CartContext";
 import Header from "./Header";
@@ -16,10 +16,23 @@ function AppContent() {
   const [showCart, setShowCart] = useState(false);
   const [showOrderHistory, setShowOrderHistory] = useState(false);
   const [showOrderConfirm, setShowOrderConfirm] = useState(false);
+  const [cartLocked, setCartLocked] = useState(false);
+  const cartLockTimer = useRef(null);
 
-  const handleOpenCart = useCallback(() => setShowCart(true), []);
-  const handleToggleCart = useCallback(() => setShowCart((v) => !v), []);
-  const handleCloseCart = useCallback(() => setShowCart(false), []);
+  const handleOpenCart = useCallback(() => {
+    setShowCart(true);
+    setCartLocked(true);
+    if (cartLockTimer.current) clearTimeout(cartLockTimer.current);
+    cartLockTimer.current = setTimeout(() => setCartLocked(false), 600);
+  }, []);
+  const handleToggleCart = useCallback(() => {
+    if (cartLocked) return;
+    setShowCart((v) => !v);
+  }, [cartLocked]);
+  const handleCloseCart = useCallback(() => {
+    if (cartLocked) return;
+    setShowCart(false);
+  }, [cartLocked]);
   const handleCheckout = useCallback(() => {
     setShowCart(false);
     setShowCheckout(true);
@@ -45,7 +58,7 @@ function AppContent() {
       <About />
       <Menu pizzas={pizzaData} onOpenCart={handleOpenCart} />
       <Footer onCheckout={handleCheckout} />
-      <Cart isOpen={showCart} onCheckout={handleCheckout} onClose={handleCloseCart} />
+      <Cart isOpen={showCart} onCheckout={handleCheckout} onClose={handleCloseCart} locked={cartLocked} />
       <Checkout isOpen={showCheckout} onClose={handleCloseCheckout} onOrderPlaced={handleOrderPlaced} />
       <OrderConfirm isOpen={showOrderConfirm} onClose={handleOrderDone} />
       <OrderHistory isOpen={showOrderHistory} onClose={() => setShowOrderHistory(false)} />

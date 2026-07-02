@@ -79,10 +79,10 @@ function cartReducer(state, action) {
 }
 
 function CartProvider({ children }) {
+  const initialItems = loadCart();
   const [state, dispatch] = useReducer(cartReducer, {
-    items: loadCart(),
-    totalItems: 0,
-    totalPrice: 0,
+    items: initialItems,
+    ...calcTotals(initialItems),
     orders: loadOrders(),
   });
 

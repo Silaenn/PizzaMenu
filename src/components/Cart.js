@@ -1,10 +1,12 @@
 import { useRef, useEffect } from "react";
 import { useCart } from "./CartContext";
 
-function Cart({ isOpen, onCheckout, onClose }) {
+function Cart({ isOpen, onCheckout, onClose, locked }) {
   const { items, totalItems, totalPrice, dispatch } = useCart();
   const panelRef = useRef(null);
   const startedOnExcluded = useRef(false);
+  const lockedRef = useRef(locked);
+  useEffect(() => { lockedRef.current = locked; }, [locked]);
 
   useEffect(() => {
     const handleMouseDown = (e) => {
@@ -12,6 +14,7 @@ function Cart({ isOpen, onCheckout, onClose }) {
     };
 
     const handleClick = (e) => {
+      if (lockedRef.current) return;
       if (startedOnExcluded.current) {
         startedOnExcluded.current = false;
         return;
@@ -43,7 +46,7 @@ function Cart({ isOpen, onCheckout, onClose }) {
               Clear
             </button>
           )}
-          <button className="cart-close" onClick={onClose}>
+          <button className="cart-close" onClick={locked ? undefined : onClose} tabIndex={locked ? -1 : 0}>
             ×
           </button>
         </div>
