@@ -80,7 +80,8 @@ This project was built as a full-featured SPA demo — no backend, no database, 
 
 ## Screenshots
 
-<img width="1936" height="5079" alt="Fast-React-Pizza-Co-—-Authentic-Italian-Pizza(1)" src="https://github.com/user-attachments/assets/17cb3da3-bf42-4b17-8fee-9bc8812cdf72" />
+<img width="1920" height="964" alt="Fast-React-Pizza-Co-—-Authentic-Italian-Pizza(2)" src="https://github.com/user-attachments/assets/739a8a65-e90b-4488-86d4-70717102aa6b" />
+
 
 
 ---
