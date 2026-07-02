@@ -44,7 +44,7 @@ function OrderConfirm({ isOpen, onClose }) {
           </>
         )}
 
-        <button className="btn" onClick={onClose} style={{ marginTop: "2rem" }}>
+        <button className="btn btn-confirm-close" onClick={onClose}>
           Back to Menu
         </button>
       </div>
