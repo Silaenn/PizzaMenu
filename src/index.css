@@ -16,6 +16,20 @@
   --radius-lg: 16px;
   --font-header: "Playfair Display", serif;
   --font-body: "Outfit", sans-serif;
+  --text-2xs: 0.95rem;
+  --text-xs: 1.2rem;
+  --text-sm: 1.3rem;
+  --text-base: 1.4rem;
+  --text-body: 1.5rem;
+  --text-md: 1.6rem;
+  --text-lg: 1.8rem;
+  --text-xl: 2rem;
+  --text-2xl: 2.4rem;
+  --text-3xl: 2.8rem;
+  --text-4xl: 3rem;
+  --text-5xl: 3.2rem;
+  --text-6xl: 4rem;
+  --text-7xl: 7.2rem;
   --cart-item-bg: #fcf5eb;
 }
 
@@ -152,7 +166,7 @@ body::before {
   background: none;
   border: none;
   font-family: inherit;
-  font-size: 1.25rem;
+  font-size: var(--text-sm);
   font-weight: 500;
   color: rgba(255, 255, 255, 0.85);
   cursor: pointer;
@@ -229,7 +243,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.95rem;
+  font-size: var(--text-2xs);
   font-weight: 700;
   box-shadow: 0 2px 6px rgba(192, 57, 43, 0.35);
   line-height: 1;
@@ -318,14 +332,14 @@ body::before {
 .hero-title {
   font-family: var(--font-header);
   font-weight: 900;
-  font-size: 7.2rem;
+  font-size: var(--text-7xl);
   line-height: 1.05;
   margin-bottom: 1.6rem;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
 .hero-subtitle {
-  font-size: 1.6rem;
+  font-size: var(--text-md);
   letter-spacing: 4px;
   text-transform: uppercase;
   opacity: 0.8;
@@ -333,7 +347,7 @@ body::before {
 }
 
 .hero-desc {
-  font-size: 1.8rem;
+  font-size: var(--text-lg);
   line-height: 1.6;
   opacity: 0.9;
   max-width: 56rem;
@@ -343,7 +357,7 @@ body::before {
 .hero-cta {
   display: inline-block;
   font-family: inherit;
-  font-size: 1.6rem;
+  font-size: var(--text-md);
   font-weight: 600;
   background: var(--color-accent);
   color: #2c1810;
@@ -371,7 +385,7 @@ body::before {
   align-items: center;
   gap: 0.4rem;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 1.2rem;
+  font-size: var(--text-xs);
   cursor: pointer;
   animation: bounceDown 2s ease infinite;
   letter-spacing: 2px;
@@ -384,7 +398,7 @@ body::before {
 }
 
 .hero-scroll-icon {
-  font-size: 2rem;
+  font-size: var(--text-xl);
 }
 
 /* *************** */
@@ -405,7 +419,7 @@ body::before {
 .about h2 {
   font-family: var(--font-header);
   font-weight: 700;
-  font-size: 4rem;
+  font-size: var(--text-6xl);
   color: var(--color-text);
   text-align: center;
   margin-bottom: 4rem;
@@ -429,7 +443,7 @@ body::before {
 }
 
 .about-text p {
-  font-size: 1.6rem;
+  font-size: var(--text-md);
   line-height: 1.7;
   color: var(--color-text-secondary);
   margin-bottom: 1.6rem;
@@ -451,14 +465,14 @@ body::before {
 
 .stat-number {
   font-family: var(--font-header);
-  font-size: 3.2rem;
+  font-size: var(--text-5xl);
   font-weight: 900;
   color: var(--color-primary);
   transition: color 0.3s;
 }
 
 .stat-label {
-  font-size: 1.2rem;
+  font-size: var(--text-xs);
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -493,7 +507,7 @@ body::before {
 .menu h2 {
   font-family: var(--font-header);
   font-weight: 700;
-  font-size: 4rem;
+  font-size: var(--text-6xl);
   color: var(--color-text);
   text-align: center;
   transition: color 0.3s;
@@ -509,7 +523,7 @@ body::before {
 }
 
 .menu > p {
-  font-size: 1.6rem;
+  font-size: var(--text-md);
   text-align: center;
   line-height: 1.6;
   color: var(--color-text-secondary);
@@ -531,7 +545,7 @@ body::before {
   padding: 1.2rem 1.6rem;
   border: 2px solid var(--color-border);
   border-radius: var(--radius-md);
-  font-size: 1.4rem;
+  font-size: var(--text-base);
   font-family: inherit;
   background: var(--color-card-bg);
   transition: border-color 0.2s, box-shadow 0.2s, background 0.3s;
@@ -558,7 +572,7 @@ body::before {
   border: 2px solid var(--color-border);
   border-radius: 20px;
   background: var(--color-card-bg);
-  font-size: 1.3rem;
+  font-size: var(--text-sm);
   font-family: inherit;
   cursor: pointer;
   transition: all 0.2s, background 0.3s, border-color 0.3s;
@@ -578,7 +592,7 @@ body::before {
 }
 
 .no-results {
-  font-size: 1.6rem;
+  font-size: var(--text-md);
   color: var(--color-text-muted);
   text-align: center;
   padding: 4rem 0;
@@ -642,14 +656,14 @@ body::before {
 .pizza-body h3 {
   font-family: var(--font-header);
   font-weight: 700;
-  font-size: 2rem;
+  font-size: var(--text-xl);
   color: var(--color-text);
   transition: color 0.3s;
 }
 
 .pizza-body p {
-  font-size: 1.3rem;
-  line-height: 1.5;
+  font-size: var(--text-base);
+  line-height: 1.6;
   color: var(--color-text-secondary);
   font-weight: 300;
   flex: 1;
@@ -667,14 +681,14 @@ body::before {
 }
 
 .pizza-price {
-  font-size: 1.8rem;
+  font-size: var(--text-lg);
   font-weight: 700;
   color: var(--color-primary);
   transition: color 0.3s;
 }
 
 .btn-add {
-  font-size: 1.3rem;
+  font-size: var(--text-sm);
   padding: 0.8rem 2rem;
   border-radius: var(--radius-sm);
   background-color: var(--color-primary);
@@ -706,7 +720,7 @@ body::before {
   transform: translate(-50%, -50%) rotate(-15deg);
   background: rgba(0, 0, 0, 0.7);
   color: #fff;
-  font-size: 1.6rem;
+  font-size: var(--text-md);
   font-weight: 700;
   padding: 0.8rem 2.4rem;
   letter-spacing: 3px;
@@ -734,7 +748,7 @@ body::before {
 }
 
 .footer > p {
-  font-size: 1.5rem;
+  font-size: var(--text-body);
   color: var(--color-text-secondary);
   transition: color 0.3s;
 }
@@ -747,7 +761,7 @@ body::before {
 }
 
 .order p {
-  font-size: 1.5rem;
+  font-size: var(--text-body);
   color: var(--color-text-secondary);
   transition: color 0.3s;
 }
@@ -755,13 +769,13 @@ body::before {
 .order-summary {
   font-weight: 600;
   color: var(--color-primary);
-  font-size: 1.6rem;
+  font-size: var(--text-md);
 }
 
 .btn {
   font-family: inherit;
   border: none;
-  font-size: 1.5rem;
+  font-size: var(--text-body);
   font-weight: 600;
   background: linear-gradient(135deg, var(--color-accent), #e0b832);
   color: #2c1810;
@@ -827,7 +841,7 @@ body::before {
 }
 
 .cart-header h3 {
-  font-size: 1.6rem;
+  font-size: var(--text-md);
   font-weight: 600;
   color: var(--color-text);
   transition: color 0.3s;
@@ -843,7 +857,7 @@ body::before {
   background: none;
   border: none;
   color: var(--color-primary);
-  font-size: 1.2rem;
+  font-size: var(--text-xs);
   cursor: pointer;
   text-decoration: underline;
   font-family: inherit;
@@ -852,7 +866,7 @@ body::before {
 .cart-close {
   background: none;
   border: none;
-  font-size: 2rem;
+  font-size: var(--text-xl);
   cursor: pointer;
   color: var(--color-text-muted);
   transition: color 0.2s;
@@ -866,7 +880,7 @@ body::before {
 .cart-empty {
   text-align: center;
   color: var(--color-text-muted);
-  font-size: 1.4rem;
+  font-size: var(--text-base);
   padding: 3rem 0;
   animation: cartEmptyIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -908,14 +922,14 @@ body::before {
 }
 
 .cart-item-name {
-  font-size: 1.3rem;
+  font-size: var(--text-base);
   font-weight: 600;
   color: var(--color-text);
   transition: color 0.3s;
 }
 
 .cart-item-price {
-  font-size: 1.3rem;
+  font-size: var(--text-base);
   font-weight: 700;
   color: var(--color-primary);
   transition: color 0.3s;
@@ -933,7 +947,7 @@ body::before {
   border-radius: 50%;
   border: 1px solid var(--color-border);
   background: var(--color-card-bg);
-  font-size: 1.4rem;
+  font-size: var(--text-base);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -951,7 +965,7 @@ body::before {
   margin-left: auto;
   background: none;
   border: none;
-  font-size: 1.6rem;
+  font-size: var(--text-md);
   color: var(--color-primary);
   cursor: pointer;
   opacity: 0.5;
@@ -966,7 +980,7 @@ body::before {
   margin-top: 1.6rem;
   padding-top: 1.2rem;
   border-top: 2px solid var(--color-border-light);
-  font-size: 1.6rem;
+  font-size: var(--text-md);
   display: flex;
   justify-content: space-between;
   font-weight: 700;
@@ -976,7 +990,7 @@ body::before {
 
 .btn-cart-checkout {
   margin-top: 1.2rem;
-  font-size: 1.3rem;
+  font-size: var(--text-sm);
   padding: 1.2rem 2rem;
   width: 100%;
   text-align: center;
@@ -1042,7 +1056,7 @@ body::before {
   right: 1.6rem;
   background: none;
   border: none;
-  font-size: 2.4rem;
+  font-size: var(--text-2xl);
   cursor: pointer;
   color: var(--color-text-muted);
   transition: color 0.2s;
@@ -1054,14 +1068,15 @@ body::before {
 
 .checkout-modal h2 {
   font-family: var(--font-header);
-  font-size: 2.8rem;
+  font-weight: 700;
+  font-size: var(--text-3xl);
   color: var(--color-text);
   margin-bottom: 1.2rem;
   transition: color 0.3s;
 }
 
 .checkout-summary {
-  font-size: 1.6rem;
+  font-size: var(--text-md);
   color: var(--color-primary);
   font-weight: 600;
   margin-bottom: 2.4rem;
@@ -1083,7 +1098,7 @@ body::before {
 }
 
 .form-field label {
-  font-size: 1.3rem;
+  font-size: var(--text-base);
   font-weight: 600;
   color: var(--color-text);
   transition: color 0.3s;
@@ -1094,7 +1109,7 @@ body::before {
   padding: 1rem 1.2rem;
   border: 2px solid var(--color-border);
   border-radius: 8px;
-  font-size: 1.4rem;
+  font-size: var(--text-base);
   font-family: inherit;
   background: var(--color-bg);
   color: var(--color-text);
@@ -1112,7 +1127,7 @@ body::before {
 }
 
 .form-error {
-  font-size: 1.2rem;
+  font-size: var(--text-xs);
   color: var(--color-primary);
 }
 
@@ -1181,7 +1196,7 @@ body::before {
   border-radius: 50%;
   background: #27ae60;
   color: #fff;
-  font-size: 2.8rem;
+  font-size: var(--text-3xl);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1190,21 +1205,22 @@ body::before {
 
 .confirm-card h2 {
   font-family: var(--font-header);
-  font-size: 3rem;
+  font-weight: 700;
+  font-size: var(--text-4xl);
   color: var(--color-text);
   margin-bottom: 0.8rem;
   transition: color 0.3s;
 }
 
 .confirm-id {
-  font-size: 1.4rem;
+  font-size: var(--text-base);
   color: var(--color-primary);
   font-weight: 600;
   margin-bottom: 1.2rem;
 }
 
 .confirm-msg {
-  font-size: 1.5rem;
+  font-size: var(--text-body);
   color: var(--color-text-secondary);
   margin-bottom: 2.4rem;
   transition: color 0.3s;
@@ -1220,7 +1236,9 @@ body::before {
 }
 
 .confirm-details h3 {
-  font-size: 1.5rem;
+  font-size: var(--text-body);
+  font-weight: 700;
+  font-family: var(--font-header);
   margin-bottom: 1.2rem;
   color: var(--color-text);
   transition: color 0.3s;
@@ -1236,7 +1254,7 @@ body::before {
 .confirm-items li {
   display: flex;
   justify-content: space-between;
-  font-size: 1.4rem;
+  font-size: var(--text-base);
   color: var(--color-text-secondary);
   transition: color 0.3s;
 }
@@ -1244,7 +1262,7 @@ body::before {
 .confirm-total {
   display: flex;
   justify-content: space-between;
-  font-size: 1.6rem;
+  font-size: var(--text-md);
   padding-top: 1.2rem;
   margin-top: 1.2rem;
   border-top: 1px solid var(--color-border-light);
@@ -1254,7 +1272,7 @@ body::before {
 
 .confirm-info {
   text-align: left;
-  font-size: 1.4rem;
+  font-size: var(--text-base);
   color: var(--color-text-secondary);
   display: flex;
   flex-direction: column;
@@ -1328,7 +1346,8 @@ body::before {
 
 .order-history-header h2 {
   font-family: var(--font-header);
-  font-size: 2.8rem;
+  font-weight: 700;
+  font-size: var(--text-3xl);
   color: var(--color-text);
   transition: color 0.3s;
 }
@@ -1336,7 +1355,7 @@ body::before {
 .order-history-close {
   background: none;
   border: none;
-  font-size: 2.4rem;
+  font-size: var(--text-2xl);
   cursor: pointer;
   color: var(--color-text-muted);
   transition: color 0.2s;
@@ -1350,7 +1369,7 @@ body::before {
 .order-history-empty {
   text-align: center;
   color: var(--color-text-muted);
-  font-size: 1.4rem;
+  font-size: var(--text-base);
   padding: 4rem 0;
   animation: fadeSlideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -1412,25 +1431,25 @@ body::before {
 }
 
 .history-item-id {
-  font-size: 1.4rem;
+  font-size: var(--text-base);
   font-weight: 600;
   color: var(--color-text);
   transition: color 0.3s;
 }
 
 .history-item-meta {
-  font-size: 1.2rem;
+  font-size: var(--text-xs);
   color: var(--color-primary);
   font-weight: 500;
 }
 
 .history-item-time {
-  font-size: 1.1rem;
+  font-size: var(--text-xs);
   color: var(--color-text-muted);
 }
 
 .history-item-arrow {
-  font-size: 1.4rem;
+  font-size: var(--text-base);
   color: var(--color-text-muted);
   transition: color 0.2s;
 }
@@ -1458,7 +1477,7 @@ body::before {
   border: 1px solid #e74c3c;
   color: #e74c3c;
   border-radius: var(--radius-sm);
-  font-size: 1.3rem;
+  font-size: var(--text-sm);
   font-family: inherit;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
@@ -1543,11 +1562,11 @@ body::before {
   }
 
   .hero-title {
-    font-size: 4rem;
+    font-size: var(--text-6xl);
   }
 
   .hero-desc {
-    font-size: 1.5rem;
+    font-size: var(--text-body);
   }
 
   .about {
@@ -1611,7 +1630,7 @@ body::before {
 
 @media (max-width: 480px) {
   .hero-title {
-    font-size: 3.2rem;
+    font-size: var(--text-5xl);
   }
 
   .hero {
