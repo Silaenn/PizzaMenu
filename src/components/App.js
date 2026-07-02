@@ -1,6 +1,6 @@
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback } from "react";
 import pizzaData from "../data";
-import { CartProvider, useCart } from "./CartContext";
+import { CartProvider } from "./CartContext";
 import Header from "./Header";
 import Hero from "./Hero";
 import About from "./About";
@@ -16,16 +16,8 @@ function AppContent() {
   const [showCart, setShowCart] = useState(false);
   const [showOrderHistory, setShowOrderHistory] = useState(false);
   const [showOrderConfirm, setShowOrderConfirm] = useState(false);
-  const { items } = useCart();
 
-  const prevItemCount = useRef(0);
-  useEffect(() => {
-    if (items.length > 0 && prevItemCount.current === 0) {
-      setShowCart(true);
-    }
-    prevItemCount.current = items.length;
-  }, [items.length]);
-
+  const handleOpenCart = useCallback(() => setShowCart(true), []);
   const handleToggleCart = useCallback(() => setShowCart((v) => !v), []);
   const handleCloseCart = useCallback(() => setShowCart(false), []);
   const handleCheckout = useCallback(() => {
@@ -51,7 +43,7 @@ function AppContent() {
       />
       <Hero />
       <About />
-      <Menu pizzas={pizzaData} />
+      <Menu pizzas={pizzaData} onOpenCart={handleOpenCart} />
       <Footer onCheckout={handleCheckout} />
       <Cart isOpen={showCart} onCheckout={handleCheckout} onClose={handleCloseCart} />
       <Checkout isOpen={showCheckout} onClose={handleCloseCheckout} onOrderPlaced={handleOrderPlaced} />

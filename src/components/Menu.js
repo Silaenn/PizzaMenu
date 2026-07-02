@@ -4,7 +4,7 @@ import Pizza from "./Pizza";
 
 const categories = ["all", "vegetarian", "meat"];
 
-function Menu({ pizzas }) {
+function Menu({ pizzas, onOpenCart }) {
   const [sectionRef, isVisible] = useScrollReveal(.1);
   const [searchQuery, setSearchQuery] = useState("");
   const [category, setCategory] = useState("all");
@@ -54,7 +54,7 @@ function Menu({ pizzas }) {
       {filtered.length > 0 ? (
         <ul className="pizzas" key={`${category}-${searchQuery}`}>
           {filtered.map((data, i) => (
-            <Pizza pizzaObj={data} key={data.name} index={i} />
+            <Pizza pizzaObj={data} key={data.name} index={i} onOpenCart={onOpenCart} />
           ))}
         </ul>
       ) : (

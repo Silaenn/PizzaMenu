@@ -8,7 +8,7 @@ function Cart({ isOpen, onCheckout, onClose }) {
 
   useEffect(() => {
     const handleMouseDown = (e) => {
-      startedOnExcluded.current = !!e.target.closest(".btn-add, .pizza, #menu");
+      startedOnExcluded.current = !!e.target.closest(".btn-add, .btn-added");
     };
 
     const handleClick = (e) => {

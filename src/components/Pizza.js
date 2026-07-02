@@ -1,11 +1,12 @@
 import { useState, useCallback } from "react";
 import { useCart } from "./CartContext";
 
-function Pizza({ pizzaObj, index }) {
+function Pizza({ pizzaObj, index, onOpenCart }) {
   const { dispatch } = useCart();
   const [added, setAdded] = useState(false);
 
-  const handleAdd = useCallback(() => {
+  const handleAdd = useCallback((e) => {
+    e.stopPropagation();
     dispatch({
       type: "ADD_ITEM",
       payload: {
@@ -16,8 +17,9 @@ function Pizza({ pizzaObj, index }) {
       },
     });
     setAdded(true);
+    onOpenCart();
     setTimeout(() => setAdded(false), 600);
-  }, [dispatch, pizzaObj]);
+  }, [dispatch, pizzaObj, onOpenCart]);
 
   return (
     <li

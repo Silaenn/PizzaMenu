@@ -329,6 +329,7 @@ body::before {
   max-width: 72rem;
   padding: 8rem 2rem 2rem;
   animation: heroFadeIn 1s ease both;
+  animation-delay: 0.3s;
 }
 
 @keyframes heroFadeIn {
@@ -634,6 +635,7 @@ body::before {
   display: flex;
   flex-direction: column;
   animation: slideUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  user-select: none;
 }
 
 .pizza:hover {
@@ -874,6 +876,11 @@ body::before {
   cursor: pointer;
   text-decoration: underline;
   font-family: inherit;
+  transition: color 0.2s;
+}
+
+.cart-clear:hover {
+  color: var(--color-primary-dark);
 }
 
 .cart-close {
@@ -1666,5 +1673,16 @@ body::before {
   .category-tabs {
     flex-wrap: wrap;
     justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
