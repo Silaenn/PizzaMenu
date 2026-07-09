@@ -7,21 +7,16 @@ function Footer({ onCheckout }) {
   const isOpen = hour >= openHour && hour <= closeHour;
 
   if (!isOpen) {
-    const nextOpen = hour < openHour ? openHour : 12;
     return (
       <footer
         className="footer"
       >
         <div className="order">
-          <p>We're currently closed for the day.</p>
           <p>
-            Our kitchen is open daily from {openHour}:00 to {closeHour}:00,
-            serving authentic wood-fired pizzas made with the freshest
-            ingredients.
-          </p>
-          <p>
-            We'll be back tomorrow at {nextOpen}:00. See you then for a slice of
-            Napoli!
+            We're closed. We're open from {openHour}:00 to {closeHour}:00.{" "}
+            {hour < openHour
+              ? `Come back at ${openHour}:00.`
+              : `Come back tomorrow at ${openHour}:00.`}
           </p>
         </div>
       </footer>
